@@ -1,0 +1,16 @@
+{
+  "CreateCharacterRequest": 101,
+  "CreateCharacterResponse": 102,
+  "LoginRequest": 103,
+  "LoginResponse": 104,
+  "EnterGameRequest": 105,
+  "EnterGameResponse": 106,
+  "ReconnectRequest": 107,
+  "ReconnectResponse": 108,
+  "LoginNotify": 109,
+  "LogoutNotify": 110,
+  "ProtoKeyRequest": 111,
+  "ProtoKeyResponse": 112,
+  "PushDataCompleteNotify": 113,
+  "ExitGamePush": 114,  
+}

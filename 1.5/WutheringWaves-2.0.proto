@@ -1,0 +1,137 @@
+syntax = "proto3";
+
+enum LogType {
+	LogType_LogType_SecGetReportData2Flow = 0;
+	LogType_LogType_SecFBRoundStartFlow = 1;
+	LogType_LogType_SecFBRoundEndFlow = 2;
+	LogType_LogType_SecRoleFightFlow_BigWorldStart = 3;
+	LogType_LogType_SecRoleFightFlow_BigWorldEnd = 4;
+	LogType_LogType_SecRoleFightFlow_InstStart = 5;
+	LogType_LogType_SecRoleFightFlow_InstEnd = 6;
+	LogType_LogType_SecWorldInfoFlow_Start = 7;
+	LogType_LogType_SecWorldInfoFlow_End = 8;
+	LogType_LogType_SecWorldStartFlow = 9;
+	LogType_LogType_SecWorldSEndFlow = 10;
+}
+
+// MessageId: 101 (Request)
+message CreateCharacterRequest {
+	int32 Sex = 1;
+	string Name = 2;
+}
+
+// MessageId: 102 (Response)
+message CreateCharacterResponse {
+	int32 code = 1;
+	string Name = 2;
+	int32 PlayerId = 3;
+	int32 CreateTime = 4;
+}
+
+message DevLoginCheckData {
+	int32 ProtoVersion = 1;
+	string ProtoMd5 = 2;
+	int32 ConfigVersion = 3;
+	string ConfigMd5 = 4;
+	string BranchName = 5;
+	string ProtoSeedMd5 = 6;
+}
+
+// MessageId: 103 (Request)
+message LoginRequest {
+	int32 Flag = 1;
+	string Account = 2;
+	string LoginTraceId = 3;
+	string Token = 4;
+	string AppVersion = 5;
+	string LauncherVersion = 6;
+	string ResourceVersion = 7;
+	ClientBasicInfo ClientBasicInfo = 8;
+	PublicResourceVersionInfo PublicResourceVersionInfo = 10;
+	AceBlackProductAccountInfo AceBlackProductAccountInfo = 11;
+	bool DevLoginCheckData = 12;
+	string lea = 13;
+	string DOLLARxa = 14;
+	string Vxa = 15;
+	string hwa = 16;
+	string DGmncbze = 17;
+	DevLoginCheckData DevLoginCheckData = 9;
+}
+
+// MessageId: 104 (Response)
+message LoginResponse {
+	int32 code = 1;
+	string ReconnectToken = 3;
+	int64 Timestamp = 8;
+	string Platform = 9;
+	int32 ClientWaitingMode = 10;
+	int32 ClientWaitingTime = 11;
+	int32 ClientAutoInInterval = 12;
+	int32 ClientDisplayTime = 13;
+}
+
+// MessageId: 105 (Request)
+message EnterGameRequest {
+	int32 SingleInstanceId = 1;
+	int32 MultiInstanceId = 2;
+	int32 Mode = 3;
+	Vector Pos = 4;
+}
+
+
+// MessageId: 106 (Response)
+message EnterGameResponse {
+	int32 code = 1;
+	int32 ClientWaitingMode = 2;
+	int32 ClientWaitingTime = 3;
+	int32 ClientAutoInInterval = 4;
+}
+
+// MessageId: 107 (Request)
+message ReconnectRequest {
+	int32 PlayerId = 1;
+	int32 LastSvrSeqNo = 2;
+	string ReconnectToken = 3;
+	string ReconnectTraceId = 4;
+}
+
+// MessageId: 108 (Response)
+message ReconnectResponse {
+	ErrorCode ErrorCode = 1;
+	int32 LastRecvSeqNo = 3;
+	int64 Timestamp = 4;
+	bool IsPermittedSilentLogin = 5;
+}
+
+// MessageId: 109 (Notify)
+message LoginNotify {
+	int32 Flag = 1;
+}
+
+// MessageId: 110 (Notify)
+message LogoutNotify {
+	BanLogoutInfo banInfo = 3;
+	int32 code = 1;
+	int32 logoutReason = 2;
+}
+
+// MessageId: 111 (Request)
+message ProtoKeyRequest {
+	bool IsLogin = 1;
+	string TraceId = 2;
+}
+
+// MessageId: 112 (Response)
+message ProtoKeyResponse {
+	int32 code = 1;
+	int32 type = 2;
+	bytes Key = 3;
+}
+
+// MessageId: 113 (Notify)
+message PushDataCompleteNotify {
+}
+
+// MessageId: 114 (Push)
+message ExitGamePush {
+}
